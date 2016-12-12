@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "PowerShell": {
+      "executablePath": "C:\\Program Files\\PowerShell\\6.0.0.13\\powershell.exe",
+      "commandLineArgs": "-NoExit -NoProfile .\\Test.ps1",
+      "workingDirectory": "C:\\Users\\Kent\\Repository\\Contented\\Src\\Contented.PowerShell"
+    }
+  }
+}
