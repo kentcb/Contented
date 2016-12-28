@@ -35,7 +35,7 @@
 
             foreach (var removedId in removedIds)
             {
-                var removedContent = new RemovedContent(this.Credentials.UserName, this.Credentials.Password, removedId);
+                var removedContent = new RemovedContent(this.Credentials, removedId);
                 this.WriteObject(removedContent);
             }
         }

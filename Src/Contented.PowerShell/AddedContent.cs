@@ -1,18 +1,17 @@
-﻿using System.Security;
-
-namespace Contented.PowerShell
+﻿namespace Contented.PowerShell
 {
+    using System.Management.Automation;
+
     public sealed class AddedContent : OutputObjectBase
     {
         private readonly string uri;
         private readonly string target;
 
         public AddedContent(
-            string user,
-            SecureString password,
+            PSCredential credentials,
             string uri,
             string target)
-            : base(user, password)
+            : base(credentials)
         {
             this.uri = uri;
             this.target = target;

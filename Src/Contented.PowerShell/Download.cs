@@ -1,7 +1,7 @@
 ﻿namespace Contented.PowerShell
 {
     using System;
-    using System.Security;
+    using System.Management.Automation;
     using Contented.Core.Synology;
     using Humanizer;
 
@@ -26,10 +26,9 @@
         private readonly int uploadSpeed;
 
         public Download(
-            string user,
-            SecureString password,
+            PSCredential credentials,
             DownloadDto downloadDto)
-            : base(user, password)
+            : base(credentials)
         {
             this.id = downloadDto.Id;
             this.size = downloadDto.Size;

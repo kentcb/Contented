@@ -1,22 +1,17 @@
 ﻿namespace Contented.PowerShell
 {
-    using System.Security;
+    using System.Management.Automation;
 
     public abstract class OutputObjectBase
     {
-        private readonly string user;
-        private readonly SecureString password;
+        private readonly PSCredential credentials;
 
         protected OutputObjectBase(
-            string user,
-            SecureString password)
+            PSCredential credentials)
         {
-            this.user = user;
-            this.password = password;
+            this.credentials = credentials;
         }
 
-        public string User => this.user;
-
-        public SecureString Password => this.password;
+        public PSCredential Credentials => this.credentials;
     }
 }

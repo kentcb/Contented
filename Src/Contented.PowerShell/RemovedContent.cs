@@ -1,16 +1,15 @@
 ﻿namespace Contented.PowerShell
 {
-    using System.Security;
+    using System.Management.Automation;
 
     public sealed class RemovedContent : OutputObjectBase
     {
         private readonly string id;
 
         public RemovedContent(
-            string user,
-            SecureString password,
+            PSCredential credentials,
             string id)
-            : base(user, password)
+            : base(credentials)
         {
             this.id = id;
         }

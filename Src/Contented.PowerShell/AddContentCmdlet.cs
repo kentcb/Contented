@@ -65,7 +65,7 @@
                     _ =>
                         synologyApi
                             .CreateDownloadTask(Uri.EscapeDataString(uri), group.Target)
-                            .Select(__ => new AddedContent(this.Credentials.UserName, this.Credentials.Password, uri, group.Target)))
+                            .Select(__ => new AddedContent(this.Credentials, uri, group.Target)))
                 .Switch();
     }
 }

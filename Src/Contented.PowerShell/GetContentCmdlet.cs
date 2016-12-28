@@ -17,7 +17,7 @@
 
             foreach (var downloadDto in downloadDtos)
             {
-                var download = new Download(this.Credentials.UserName, this.Credentials.Password, downloadDto);
+                var download = new Download(this.Credentials, downloadDto);
                 this.WriteObject(download);
             }
         }
