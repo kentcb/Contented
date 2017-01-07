@@ -4,7 +4,7 @@
     using System.Management.Automation;
     using System.Reactive.Linq;
 
-    [Cmdlet(VerbsCommon.Remove, "Content")]
+    [Cmdlet(VerbsCommon.Remove, "Contented")]
     public sealed class RemoveContentCmdlet : ContentedCmdlet
     {
         [Parameter(

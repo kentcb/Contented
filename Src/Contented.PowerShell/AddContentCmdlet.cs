@@ -10,7 +10,7 @@
     using Core;
     using Core.Synology;
 
-    [Cmdlet(VerbsCommon.Add, "Content")]
+    [Cmdlet(VerbsCommon.Add, "Contented")]
     public sealed class AddContentCmdlet : ContentedCmdlet
     {
         [Parameter(

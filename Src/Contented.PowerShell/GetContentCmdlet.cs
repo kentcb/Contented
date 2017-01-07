@@ -4,7 +4,7 @@
     using System.Management.Automation;
     using System.Reactive.Linq;
 
-    [Cmdlet(VerbsCommon.Get, "Content")]
+    [Cmdlet(VerbsCommon.Get, "Contented")]
     public class GetContentCmdlet : ContentedCmdlet
     {
         protected override void ProcessRecord()
