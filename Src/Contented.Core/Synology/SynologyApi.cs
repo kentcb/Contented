@@ -74,6 +74,25 @@
                 .Select(jobject => jobject["data"]["folders"].Children().Select(child => child["path"].ToString()).ToImmutableList());
         }
 
+        public IObservable<Unit> Configure(int? maxDownloadSpeed, int? maxUploadSpeed) =>
+            httpClient
+                .GetAsync($"{httpClient.BaseAddress}/DownloadStation/info.cgi?api=SYNO.DownloadStation.Info&version=1&method=setserverconfig{GetOptionalParameter("bt_max_download", maxDownloadSpeed?.ToString())}{GetOptionalParameter("bt_max_upload", maxUploadSpeed?.ToString())}")
+                .ToObservable()
+                .ValidateAndParseResponse()
+                .ToSignal();
+
+        private static string GetOptionalParameter(string name, string value, bool escapeValue = true)
+        {
+            if (value == null)
+            {
+                return null;
+            }
+
+            value = escapeValue ? EscapeParameter(value) : value;
+
+            return $"&{name}={value}";
+        }
+
         private static string EscapeParameter(string value) =>
             Uri.EscapeDataString(value);
     }
