@@ -5,7 +5,7 @@
     using System.Reactive.Linq;
 
     [Cmdlet(VerbsCommon.Remove, "Contented")]
-    public sealed class RemoveContentCmdlet : ContentedCmdlet
+    public sealed class RemoveContentCmdlet : SynologyCmdlet
     {
         [Parameter(
             Mandatory = true,

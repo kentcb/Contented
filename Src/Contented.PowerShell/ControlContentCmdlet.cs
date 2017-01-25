@@ -5,7 +5,7 @@
     using System.Reactive.Linq;
 
     [Cmdlet("Control", "Contented")]
-    public sealed class ControlContentCmdlet : ContentedCmdlet
+    public sealed class ControlContentCmdlet : SynologyCmdlet
     {
         [Parameter(
             HelpMessage = "Maximum download speed.")]

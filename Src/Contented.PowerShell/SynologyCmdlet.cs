@@ -9,11 +9,11 @@
     using System.Security.Cryptography.X509Certificates;
     using Core.Synology;
 
-    public abstract class ContentedCmdlet : Cmdlet
+    public abstract class SynologyCmdlet : Cmdlet
     {
         private readonly Lazy<SynologyApi> synologyApi;
 
-        protected ContentedCmdlet()
+        protected SynologyCmdlet()
         {
             this.synologyApi = new Lazy<SynologyApi>(CreateSynologyApi);
         }

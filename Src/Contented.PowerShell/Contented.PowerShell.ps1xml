@@ -89,6 +89,7 @@
         </TableRowEntries>
       </TableControl>
     </View>
+
     <View>
       <Name>Contented.PowerShell.AddedContent</Name>
       <ViewSelectedBy>
@@ -121,6 +122,7 @@
         </TableRowEntries>
       </TableControl>
     </View>
+
     <View>
       <Name>Contented.PowerShell.RemovedContent</Name>
       <ViewSelectedBy>
@@ -139,6 +141,39 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Id</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
+    <View>
+      <Name>Contented.PowerShell.RenamedContent</Name>
+      <ViewSelectedBy>
+        <TypeName>Contented.PowerShell.RenamedContent</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Old Name</Label>
+            <Width>80</Width>
+            <Alignment>right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>New Name</Label>
+            <Width>80</Width>
+            <Alignment>right</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>OldName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NewName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

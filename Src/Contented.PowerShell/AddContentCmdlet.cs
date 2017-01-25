@@ -11,7 +11,7 @@
     using Core.Synology;
 
     [Cmdlet(VerbsCommon.Add, "Contented")]
-    public sealed class AddContentCmdlet : ContentedCmdlet
+    public sealed class AddContentCmdlet : SynologyCmdlet
     {
         [Parameter(
             Mandatory = true,

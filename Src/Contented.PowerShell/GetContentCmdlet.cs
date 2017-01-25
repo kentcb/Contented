@@ -5,7 +5,7 @@
     using System.Reactive.Linq;
 
     [Cmdlet(VerbsCommon.Get, "Contented")]
-    public class GetContentCmdlet : ContentedCmdlet
+    public class GetContentCmdlet : SynologyCmdlet
     {
         protected override void ProcessRecord()
         {

@@ -6,8 +6,7 @@
   "publishOptions": {
     "includeFiles": [
       "./Contented.PowerShell.ps1xml",
-      "./Contented.PowerShell.psd1",
-      "./input.txt"
+      "./Contented.PowerShell.psd1"
     ]
   },
 
