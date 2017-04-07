@@ -45,7 +45,7 @@
 
             while ((line = reader.ReadLine()) != null)
             {
-                if (string.IsNullOrWhiteSpace(line))
+                if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
                 {
                     continue;
                 }
@@ -56,7 +56,7 @@
 
             while ((line = reader.ReadLine()) != null)
             {
-                if (string.IsNullOrWhiteSpace(line))
+                if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
                 {
                     break;
                 }
