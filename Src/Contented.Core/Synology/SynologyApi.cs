@@ -63,16 +63,12 @@
                 .ValidateAndParseResponse()
                 .Select(jobject => jobject["data"].Children().Select(child => child["id"].ToString()).ToImmutableList());
 
-        // TODO: OMFG this API is a farce. See https://forum.synology.com/enu/viewtopic.php?t=124623 when I move to Syno 6. In the meantime, cannot escape data.
-        public IObservable<IImmutableList<string>> CreateFolder(string rootPath, string name, bool forceCreateParent)
-        {
-            var uri = $"{httpClient.BaseAddress}/FileStation/file_crtfdr.cgi?api=SYNO.FileStation.CreateFolder&version=1&method=create&folder_path={rootPath}&name={name}&force_parent={forceCreateParent}";
-            return httpClient
-                .GetAsync(uri)
+        public IObservable<IImmutableList<string>> CreateFolder(string rootPath, string name, bool forceCreateParent) =>
+            httpClient
+                .GetAsync($"{httpClient.BaseAddress}/entry.cgi?api=SYNO.FileStation.CreateFolder&version=2&method=create&folder_path=\"{rootPath}\"&name=\"{name}\"")
                 .ToObservable()
                 .ValidateAndParseResponse()
                 .Select(jobject => jobject["data"]["folders"].Children().Select(child => child["path"].ToString()).ToImmutableList());
-        }
 
         public IObservable<Unit> Configure(int? maxDownloadSpeed, int? maxUploadSpeed) =>
             httpClient
