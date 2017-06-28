@@ -106,23 +106,27 @@
                     {
                         if (!response.IsSuccessStatusCode)
                         {
-                            throw new HttpRequestException($"Request failed ({response.StatusCode}).");
+                            throw new HttpRequestException($"Request to {response.RequestMessage.RequestUri} failed ({response.StatusCode}).");
                         }
 
-                        return response.Content.ReadAsStreamAsync();
+                        return response
+                            .Content
+                            .ReadAsStreamAsync()
+                            .ToObservable()
+                            .Select(responseStream => new { Response = response, ResponseStream = responseStream });
                     })
                 // can't read as string because Syno are returning "UTF-8" (including quotes) instead of just "UTF-8" sans quotes, which makes the ReadAsStringAsync method fall over
-                .SelectMany(stream => new StreamReader(stream, Encoding.UTF8).ReadToEndAsync())
+                .SelectMany(info => new StreamReader(info.ResponseStream, Encoding.UTF8).ReadToEndAsync().ToObservable().Select(responseBody => new { Response = info.Response, ResponseBody = responseBody }))
                 .Select(
-                    responseString =>
+                    info =>
                     {
-                        var jobject = JObject.Parse(responseString);
+                        var jobject = JObject.Parse(info.ResponseBody);
                         var result = jobject["success"].Value<bool>();
 
                         if (!result)
                         {
                             var code = jobject["error"]?["code"];
-                            throw new HttpRequestException($"Response indicated failure (code {code}).");
+                            throw new HttpRequestException($"Response from {info.Response.RequestMessage.RequestUri} indicated failure (code {code}).");
                         }
 
                         return jobject;
